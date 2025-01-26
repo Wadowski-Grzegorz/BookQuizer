@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+  # login-service:
+  #   build: ./login-service
+  #   ports:
+  #     - "8001:8001"
+  #   environment:
+  #     - DATABASE_URL=postgresql://postgres:postgres@db:5432/bookdb
+  #   depends_on:
+  #     - db
+  
+  myapp:
+    build: ./myapp
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/bookdb
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: bookdb
+
+volumes:
+  pgdata:
