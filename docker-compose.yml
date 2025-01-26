@@ -1,15 +1,6 @@
 version: '3.7'
 
-services:
-  # login-service:
-  #   build: ./login-service
-  #   ports:
-  #     - "8001:8001"
-  #   environment:
-  #     - DATABASE_URL=postgresql://postgres:postgres@db:5432/bookdb
-  #   depends_on:
-  #     - db
-  
+services:  
   myapp:
     build: ./myapp
     ports:
